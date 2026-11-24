@@ -32,6 +32,7 @@ def _manual_control(url: str, payload: dict[str, object]) -> None:
 
 
 def move(sequence: str, valetudo_url: str) -> None:
+    sequence = sequence.lower()
     if not sequence or any(key not in MOVEMENT_VECTORS for key in sequence):
         raise ValueError("use a non-empty sequence of w, a, s, and d")
     base = urlsplit(valetudo_url)
@@ -41,7 +42,7 @@ def move(sequence: str, valetudo_url: str) -> None:
     url = valetudo_url.rstrip("/") + MANUAL_CONTROL_PATH
     disable = {"action": "disable"}
     try:
-        _manual_control(url, {"action": "enable"})
+        # _manual_control(url, {"action": "enable"})
         for key in sequence:
             command = {"action": "move", "vector": MOVEMENT_VECTORS[key]}
             # Refresh the vector during the burst, as the Valetudo joystick does.
@@ -54,8 +55,8 @@ def move(sequence: str, valetudo_url: str) -> None:
         except (OSError, HTTPException, ValueError) as exc:
             LOG.warning("Could not disable Valetudo manual control: %s", exc)
         raise
-    else:
-        _manual_control(url, disable)
+    # else:
+    #     _manual_control(url, disable)
 
 
 def speak(text: str, host: str, ssh_key: Path | None) -> None:

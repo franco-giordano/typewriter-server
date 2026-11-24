@@ -68,7 +68,7 @@ def main() -> None:
     def deliver(event: Event) -> None:
         if args.dry_run:
             LOG.info("Event %r: %r", event.id, event.text)
-        elif event.text.startswith("m "):
+        elif event.text.startswith("m:"):
             sequence = event.text[2:].strip()
             try:
                 valetudo_url = args.valetudo_url
