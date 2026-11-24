@@ -1,0 +1,15 @@
+[project]
+name = "typewriter-client"
+version = "0.1.0"
+description = "Poll typed text events to speak or drive a Valetudo vacuum."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+typewriter-client = "typewriter_client.client:main"
+typewriter-event-server = "typewriter_client.server:main"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
