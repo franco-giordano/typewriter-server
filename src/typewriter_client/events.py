@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from urllib.request import Request, urlopen
 
 
-DEFAULT_EVENTS_URL = "http://127.0.0.1:8000/events"
+DEFAULT_EVENTS_URL = "http://127.0.0.1:5678/events"
 
 
 @dataclass(frozen=True)

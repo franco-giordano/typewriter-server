@@ -14,10 +14,12 @@ uv run typewriter-event-server
 uv run typewriter-client --dry-run
 ```
 
+The server listens on all IPv4 interfaces on port `5678` by default.
+
 Publish text from a third terminal.
 
 ```sh
-curl -fsS http://127.0.0.1:8000/events \
+curl -fsS http://127.0.0.1:5678/events \
   -H 'Content-Type: application/json' \
   --data '{"text":"hello world"}'
 ```
@@ -43,7 +45,7 @@ The client turns each new event into 16 kHz, mono, signed 16-bit PCM and sends i
 With the client running in vacuum mode, post text starting with `m ` followed by a sequence of movement keys.
 
 ```sh
-curl -fsS http://127.0.0.1:8000/events \
+curl -fsS http://127.0.0.1:5678/events \
   -H 'Content-Type: application/json' \
   --data '{"text":"m wwasd"}'
 ```
